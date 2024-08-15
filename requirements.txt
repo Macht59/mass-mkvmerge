@@ -1,0 +1,3 @@
+pymkv2
+argparse
+setuptools
