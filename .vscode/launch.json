@@ -11,7 +11,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "args": [
-                "/mnt/media-1/plex/tv-shows/[Beatrice-Raws] Sword Art Online [BDRip 1080p x265 FLAC]",
+                "/my/directory/",
                 "--verbose",
                 "--dry-run"
             ]

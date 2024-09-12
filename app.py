@@ -33,6 +33,18 @@ def main():
         dest="delete_source_files",
         action="store_true",
     )
+    parser.add_argument(
+        "--episode-from",
+        type=int,
+        dest="episode_from",
+        default=1,
+    )
+    parser.add_argument(
+        "--episode-to",
+        type=int,
+        dest="episode_to",
+        default=9999,
+    )
     args = parser.parse_args()
 
     directory = args.directory
@@ -51,6 +63,13 @@ def main():
         ep.scan_soundtracks(file_finder)
         if args.verbose:
             logging.info(ep)
+        if args.episode_from <= ep.number <= args.episode_to:
+            if args.verbose:
+                logging.info(f"Episode is in range")
+        else:
+            if args.verbose:
+                logging.info(f"Skipping out of range episode")
+            continue
         if not args.dry_run:
             mkv = MKVFile(ep.path)
             for soundtrack in ep.soundtracks:
